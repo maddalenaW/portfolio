@@ -1,0 +1,239 @@
+/* -----------------------------------------------------------------------------
+    Meyer's reset 2.0
+----------------------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// -----------------------------------------------------------------------------
+//    SASS Mixins and Variables
+// -----------------------------------------------------------------------------
+
+$reddish: #d24f47;
+$whitish: #fff;
+$color-transition-speed: 550ms;
+$spi-size: 1035px;
+$small-spi-size: 365px;
+
+@mixin transition($transition: all 150ms ease-out) {
+   -webkit-transition: $transition;       /* Chrome 1-25, Safari 3.2+ */
+       -moz-transition: $transition;      /* Firefox 4-15 */
+           -o-transition: $transition;    /* Opera 10.50–12.00 */
+             transition: $transition;     /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+@mixin transition2($transition1: all 150ms ease-out, $transition2: all 150ms ease-out) {
+   -webkit-transition: $transition1, $transition2;
+       -moz-transition: $transition1, $transition2;
+           -o-transition: $transition1, $transition2;
+             transition: $transition1, $transition2;   
+}
+
+@mixin unselectable {
+	-webkit-touch-callout: none;
+		-webkit-user-select: none;
+			-khtml-user-select: none;
+				-moz-user-select: none;
+					-ms-user-select: none;
+						user-select: none;
+}
+
+/* -----------------------------------------------------------------------------
+    Global
+----------------------------------------------------------------------------- */
+
+/* Typography */
+
+a { 
+    text-decoration:none;
+}
+
+p, h1 {
+    margin-bottom: 15px;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 18px;
+    line-height: 27px;
+    & span {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+}
+
+body p::selection, h1::selection { background:lighten($reddish, 40%) }
+body p::-moz-selection, h1::-moz-selection { background:lighten($reddish, 40%) }
+
+/* -----------------------------------------------------------------------------
+    Icons
+----------------------------------------------------------------------------- */
+
+[class^="icon-"], [class*=" icon-"] {
+    font-size: 24px;
+    @include transition2(opacity 150ms ease-out, color $color-transition-speed ease-out);
+}
+
+body.reddish [class^="icon-"], body.reddish [class*=" icon-"] { color: $whitish; }
+body.whitish [class^="icon-"], body.whitish [class*=" icon-"] { color: $reddish; }
+
+/* -----------------------------------------------------------------------------
+    Layout
+----------------------------------------------------------------------------- */
+
+html {
+    cursor: pointer;
+    height: 100%;
+}
+
+body {
+    font: 200 normal 14px/21px "jaf-facitweb", Helvetica, Arial, sans-serif;
+    @include transition2(color ease-out $color-transition-speed, background-color ease-out $color-transition-speed);
+    overflow: hidden;
+    top: -200px;
+    left: -35%;
+    height: 100%;
+}
+
+body.reddish { background:$reddish; color:$whitish; border-color: $whitish; }
+body.whitish { background:$whitish; color:$reddish; border-color: $reddish; }
+
+/* -----------------------------------------------------------------------------
+    Animation
+----------------------------------------------------------------------------- */
+
+#animation {
+    width: $spi-size;
+    height: $spi-size;
+    margin: auto;
+    position: absolute;
+    top: 0; left: -1000px; bottom: 0; right: 0;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0;
+	@include unselectable;
+}
+
+#animation .spiro1, #animation .spiro2, #animation .spiro3  {
+    display: inline-block;
+    position: absolute;
+    font-size: $spi-size;
+    opacity: 0.5;
+    background: transparent;
+    -webkit-transition: opacity 1000ms ease-in-out;
+    @include unselectable;
+}
+
+/* -----------------------------------------------------------------------------
+    Content
+----------------------------------------------------------------------------- */
+
+#content {
+    height: 115px;
+    position: absolute;
+    max-width: 380px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.socials, .contact {
+    margin-top: -4px;
+}
+
+.socials {
+    & a {
+        margin-right: 15px;
+        &:last-child {
+            margin-right: 0;
+        }
+		&:hover{
+			opacity: 0.8;
+		}
+    }
+}
+
+/* -----------------------------------------------------------------------------
+    Wind Notice
+----------------------------------------------------------------------------- */
+
+#wind-notice {
+    position: absolute;
+    font-style: italic;
+    font-size: 13px;
+    text-align: center;
+    width: 100vw;
+    bottom: 30px;
+    opacity: 0;
+}
+
+#wind-notice a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* -----------------------------------------------------------------------------
+    Media Queries
+----------------------------------------------------------------------------- */
+
+@media screen and (max-width:520px) {
+    #animation { width: $small-spi-size; height:$small-spi-size; }
+    #animation .spiro1, #animation .spiro2, #animation .spiro3 { font-size:$small-spi-size; }
+    h1 { font-size:14px; }
+}
+
+/* -----------------------------------------------------------------------------
+    Utilitaries
+----------------------------------------------------------------------------- */
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
