@@ -137,12 +137,12 @@ body.whitish {
     Animation
 ----------------------------------------------------------------------------- */
 #animation {
-  width: 1035px;
-  height: 1035px;
+  width: 600px;
+  height: 600px;
   margin: auto;
   position: absolute;
   top: 0;
-  left: -1000px;
+  left: 0px;
   bottom: 0;
   right: 0;
   z-index: 0;
@@ -159,7 +159,7 @@ body.whitish {
 #animation .spiro1, #animation .spiro2, #animation .spiro3 {
   display: inline-block;
   position: absolute;
-  font-size: 1035px;
+  font-size: 600px;
   opacity: 0.5;
   background: transparent;
   -webkit-transition: opacity 1000ms ease-in-out;
@@ -180,7 +180,7 @@ body.whitish {
   max-width: 380px;
   margin: auto;
   position: absolute;
-  top: 0;
+  top: 5px;
   left: 0;
   bottom: 0;
   right: 0;

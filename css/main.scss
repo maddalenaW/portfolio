@@ -53,7 +53,7 @@ table {
 $reddish: #d24f47;
 $whitish: #fff;
 $color-transition-speed: 550ms;
-$spi-size: 1035px;
+$spi-size: 600px;
 $small-spi-size: 365px;
 
 @mixin transition($transition: all 150ms ease-out) {
@@ -149,7 +149,7 @@ body.whitish { background:$whitish; color:$reddish; border-color: $reddish; }
     height: $spi-size;
     margin: auto;
     position: absolute;
-    top: 0; left: -1000px; bottom: 0; right: 0;
+    top: 0; left: 0px; bottom: 0; right: 0;
     z-index: 0;
     overflow: hidden;
     opacity: 0;
@@ -176,7 +176,7 @@ body.whitish { background:$whitish; color:$reddish; border-color: $reddish; }
     max-width: 380px;
     margin: auto;
     position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
+    top: 5px; left: 0; bottom: 0; right: 0;
     text-align: center;
     z-index: 10;
 }

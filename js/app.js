@@ -3,17 +3,17 @@ $(document).ready(function() {
 
 // Animate those spirographs
         var x = 1;
-        setTimeout(anim, 1000);
-        var interval = setInterval(anim, 5100);
+        setTimeout(anim, 0);
+        var interval = setInterval(anim, 5000);
 
         $("#animation, #wind-notice").transition({ opacity: 1 }, 3000);
 
         function anim() {
-            spiRotationFactor = 5 * 100 * Math.sin(x);
+            spiRotationFactor = 2 * 100 * Math.sin(x);
             console.log(spiRotationFactor);
-            $(".spiro1").transition({rotate: spiRotationFactor +'deg'}, 5000, 'cubic-bezier(0.435, 0.005, 0.505, 1.000)');
-            $(".spiro2").transition({rotate: spiRotationFactor / 2 +'deg'}, 5000, 'cubic-bezier(0.435, 0.005, 0.505, 1.000)');
-            $(".spiro3").transition({rotate: spiRotationFactor / 4 +'deg'}, 5000, 'cubic-bezier(0.435, 0.005, 0.505, 1.000)');
+            $(".spiro1").transition({rotate: spiRotationFactor +'deg'}, 5000, 'cubic-bezier(0.750, 0.00, 0.250, 1.000)');
+            $(".spiro2").transition({rotate: spiRotationFactor / 2 +'deg'}, 5000, 'cubic-bezier(0.750, 0.00, 0.250, 1.000)');
+            $(".spiro3").transition({rotate: spiRotationFactor / 3 +'deg'}, 5000, 'cubic-bezier(0.750, 0.00, 0.250, 1.000)');
             x++;
         }
 
